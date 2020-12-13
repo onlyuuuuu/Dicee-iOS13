@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var imageDice1: UIImageView!
     @IBOutlet weak var imageDice2: UIImageView!
     @IBOutlet weak var buttonRoll: UIButton!
+    @IBOutlet weak var buttonAppInfo: UIButton!
     
     var pressCount = 0;
     
@@ -21,6 +22,7 @@ class ViewController: UIViewController {
         print("start viewDidLoad()...")
         
         buttonRoll.layer.cornerRadius = 20
+        buttonAppInfo.layer.cornerRadius = 10
         
         imageDice1.layer.cornerRadius = 15
         imageDice2.layer.cornerRadius = 15
@@ -52,12 +54,20 @@ class ViewController: UIViewController {
             imageDice2.image = UIImage(named: dice[5])
         }
         if (pressCount > 10) {
-            let alert = UIAlertController(title: "Nhấn 10 lần rồi đó", message: "Nhấn gì nhiều dữ dị thằng loz?", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Đéo nhấn nữa", style: .cancel, handler: nil))
-            alert.addAction(UIAlertAction(title: "Nhấn tiếp", style: .destructive, handler: nil))
-            alert.addAction(UIAlertAction(title: "C Ú T", style: .default, handler: nil))
+            let alert = UIAlertController(title: "more than 10 times already", message: "What's the fucking point of pressing to many times?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Stop pressing", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Continue pressing", style: .destructive, handler: nil))
+            alert.addAction(UIAlertAction(title: "G E T L O S T", style: .default, handler: nil))
             self.present(alert, animated: true)
         }
     }
+
+    @IBAction func appInfoButtonPressed(_ sender: UIButton) {
+        print("User chose to see application information!");
+        let alert = UIAlertController(title: "Application information", message: "This app was built by Anh Nguyen (OnlyU)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
 }
 
